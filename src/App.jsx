@@ -6,15 +6,13 @@ import Experience from "./Experience.jsx";
 import { Model } from "./Model.jsx"
 import './index.css'
 
-
-
 export default function App() {
   
   const [count, setCount] = useState(0)
 
  return (
 
-  
+
     <Canvas shadows camera={{ position: [3, 3, 3], fov: 40 }}>
       <ambientLight 
         intensity = { 0.1}
