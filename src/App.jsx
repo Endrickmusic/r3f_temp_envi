@@ -24,7 +24,7 @@ export default function App() {
       <Environment
         // path = "./Environments/1"
         files = "./Environments/field_2k.hdr"
-        background 
+         
         />
         {/* <color 
           attach="background" 

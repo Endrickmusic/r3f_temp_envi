@@ -24,6 +24,7 @@ function ReflectiveBox(){
     <>
       <RoundedBox
       radius={0.01}
+      position = {[ -2, 0, 1]}
       >
         <meshStandardMaterial 
           // metalness={ metalness }
@@ -33,14 +34,6 @@ function ReflectiveBox(){
           normalMap = { normalMap }
         />
       </RoundedBox>
-
-      {/* <primitive 
-        object ={ model.scene } 
-        position = {[5, 0, 0]} 
-        scale = { 0.5 }
-      /> */}
-      {/* <Model /> */}
-
  </>
   )
 } 
