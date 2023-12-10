@@ -29,7 +29,7 @@ function ReflectiveBox(){
           // metalness={ metalness }
           // roughness={ roughness }
           {...tweakableProperties}
-          envMap = {envMap}
+          envMap = { envMap }
           normalMap = { normalMap }
         />
       </RoundedBox>
@@ -39,7 +39,7 @@ function ReflectiveBox(){
         position = {[5, 0, 0]} 
         scale = { 0.5 }
       /> */}
-      <Model />
+      {/* <Model /> */}
 
  </>
   )
