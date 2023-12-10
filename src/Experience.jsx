@@ -1,23 +1,57 @@
-import { OrbitControls, RoundedBox } from "@react-three/drei"
+import { OrbitControls, RoundedBox, useEnvironment } from "@react-three/drei"
 import { useLoader } from "@react-three/fiber"
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+// import { TextureLoader } from 'three/examples/jsm/loaders/TextureLoader'
 import * as THREE from "three"
+import { useControls } from 'leva'
+import { Model } from './Model.jsx'
+ 
+function ReflectiveBox(){
+  const tweakableProperties = useControls({
+    roughness: { value: 0.1, min: 0, max: 1},
+    metalness: { value: 1, min: 0, max: 1}
+  })
 
+  const normalMap = useLoader(THREE.TextureLoader, "./Textures/waternormals.jpeg")
+
+  const envMap = useEnvironment({ path: './Environments/1'})
+
+  const model = useLoader(GLTFLoader, './models/LeePerrySmith/LeePerrySmith.glb')
+
+ 
+
+  return (
+    <>
+      <RoundedBox
+      radius={0.01}
+      >
+        <meshStandardMaterial 
+          // metalness={ metalness }
+          // roughness={ roughness }
+          {...tweakableProperties}
+          envMap = {envMap}
+          normalMap = { normalMap }
+        />
+      </RoundedBox>
+
+      {/* <primitive 
+        object ={ model.scene } 
+        position = {[5, 0, 0]} 
+        scale = { 0.5 }
+      /> */}
+      <Model />
+
+ </>
+  )
+} 
 
 export default function Experience(){
 
-  const normalM = useLoader(THREE.TextureLoader, "./Textures/waternormals.jpeg"); 
+  
 
   return (
     <>
       <OrbitControls />       
-        <RoundedBox
-          radius={0.01}
-          >
-          <meshStandardMaterial 
-            metalness={1}
-            roughness={0.12}
-            normalMap={ normalM }
-          />
-       </RoundedBox>
+      <ReflectiveBox />
     </>
   )}
