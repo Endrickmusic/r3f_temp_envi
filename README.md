@@ -1,3 +1,3 @@
 # React Three Fiber + Vite
 
-Easy Template for React Three Fiber
+React Three Fiber Template with Environment
