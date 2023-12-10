@@ -23,7 +23,7 @@ export default function App() {
       <pointLight position={[-3, -3, 2]} />
       <Environment
         // path = "./Environments/1"
-        files = "./Environments/envmap.hdr"
+        files = "./Environments/field_2k.hdr"
         background 
         />
         {/* <color 
