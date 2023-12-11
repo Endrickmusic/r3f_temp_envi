@@ -1,10 +1,8 @@
+import { useRef } from 'react'
 import { OrbitControls, RoundedBox, useEnvironment } from "@react-three/drei"
-import { useLoader } from "@react-three/fiber"
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-// import { TextureLoader } from 'three/examples/jsm/loaders/TextureLoader'
+import { useLoader, useFrame } from "@react-three/fiber"
 import * as THREE from "three"
 import { useControls } from 'leva'
-import { Model } from './Model.jsx'
  
 function ReflectiveBox(){
   const tweakableProperties = useControls({
@@ -16,13 +14,16 @@ function ReflectiveBox(){
 
   const envMap = useEnvironment({ path: './Environments/1'})
 
-  const model = useLoader(GLTFLoader, './models/LeePerrySmith/LeePerrySmith.glb')
+  const boxRef = useRef()
 
- 
+  useFrame(() => {
+      boxRef.current.rotation.x = boxRef.current.rotation.y += 0.002
+    })
 
   return (
     <>
       <RoundedBox
+      ref = { boxRef }
       radius={0.01}
       position = {[ -2, 0, 1]}
       >
