@@ -18,6 +18,11 @@
   -webkit-text-size-adjust: 100%;
 }
 
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
 canvas {
   width: 100vw;
   height: 100vh;
