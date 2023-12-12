@@ -45,7 +45,14 @@ export default function Experience(){
 
   return (
     <>
-      <OrbitControls />       
+      <OrbitControls 
+      minAzimuthAngle={ - Math.PI / 24 }
+      maxAzimuthAngle={ Math.PI / 24 }
+      minPolarAngle={ Math.PI / 2.5 }
+      maxPolarAngle={ Math.PI - (Math.PI / 2.5) }
+      enableZoom = {false}
+      enableDamping={true}
+      />       
       <ReflectiveBox />
     </>
   )}

@@ -13,7 +13,7 @@ export default function App() {
  return (
 
 
-    <Canvas shadows camera={{ position: [3, 3, 3], fov: 40 }}>
+    <Canvas shadows camera={{ position: [2, 2, 7], fov: 40 }}>
       <ambientLight 
         intensity = { 0.1}
       />
