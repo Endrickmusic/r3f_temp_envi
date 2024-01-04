@@ -20,15 +20,10 @@ export default function App() {
       <pointLight position={[5, 5, 5]} intensity={1} />
       <pointLight position={[-3, -3, 2]} />
       <Environment
-        // path = "./Environments/1"
         files = "./Environments/field_2k.hdr"
          
         />
-        {/* <color 
-          attach="background" 
-          args={["#c1efef"]}/> */}
         <Model />
-        <Experience />
     </Canvas>
   
   );
