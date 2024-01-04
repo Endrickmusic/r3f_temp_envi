@@ -2,16 +2,22 @@ import React from "react";
 import { useGLTF, useEnvironment } from "@react-three/drei";
 import { useLoader, useFrame } from '@react-three/fiber'
 import { TextureLoader } from '/node_modules/three/src/loaders/TextureLoader'
+import { DoubleSide } from "three"
+import { useRef } from "react"
 
 
 export function Model(props) {
+
+  const planeRef = useRef()
 
    const customUniforms = {
         uTime: { value: 0 }
     }
 
-    useFrame(() => {
+    useFrame((state, delta) => {
       customUniforms.uTime.value += 0.01
+      planeRef.current.rotation.x = planeRef.current.rotation.y += delta / 12
+
     })
 
     const onBeforeCompile = (shader) => 
@@ -55,11 +61,12 @@ export function Model(props) {
     }
 
     const normalTexture = useLoader(TextureLoader, './Textures/waternormals.jpeg')
-    const envMap = useEnvironment({files : './Environments/field_2k.hdr'})
+    const envMap = useEnvironment({files : './Environments/envmap.hdr'})
 
   return (
     <group {...props} dispose={null}>
       <mesh
+      ref = { planeRef }
       scale = {0.2}
       rotation = { [-0.2*Math.PI, 0.1*Math.PI, 0] }
       >
@@ -70,11 +77,16 @@ export function Model(props) {
         />
         <meshStandardMaterial 
         onBeforeCompile = { onBeforeCompile }
+        color = { 0xf4c400 }
         envMap = { envMap }
         normalMap = { normalTexture }
-        roughness = { 0.1 }
+        normalScale = { [0.2, 0.2] }
+        roughness = { 0.16 }
         metalness = { 1 }
+        side = { DoubleSide }
         />
+
+        {/* <MeshNormalMaterial /> */}
       </mesh>
       
     </group>

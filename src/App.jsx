@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Logo from '/face-blowing-a-kiss.svg'
 import { Canvas } from "@react-three/fiber";
-import { Environment } from "@react-three/drei";
+import { Environment, OrbitControls } from "@react-three/drei";
 
 import { Model } from "./Model.jsx"
 import './index.css'
@@ -14,6 +14,7 @@ export default function App() {
 
 
     <Canvas shadows camera={{ position: [2, 2, 7], fov: 40 }}>
+      <OrbitControls />
       <ambientLight 
         intensity = { 0.1}
       />
