@@ -1,5 +1,5 @@
 import React from "react";
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, useEnvironment } from "@react-three/drei";
 import { useLoader, useFrame } from '@react-three/fiber'
 import { TextureLoader } from '/node_modules/three/src/loaders/TextureLoader'
 
@@ -54,25 +54,25 @@ export function Model(props) {
      )
     }
 
-    const mapTexture = useLoader(TextureLoader, '/models/LeePerrySmith/color.jpg')
-    const normalTexture = useLoader(TextureLoader, '/models/LeePerrySmith/normal.jpg')
-    const { nodes } = useGLTF("./models/LeePerrySmith/LeePerrySmith.glb")
+    const normalTexture = useLoader(TextureLoader, './Textures/waternormals.jpeg')
+    const envMap = useEnvironment({files : './Environments/field_2k.hdr'})
 
   return (
     <group {...props} dispose={null}>
       <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.LeePerrySmith.geometry}
-        position={[ 1, 0, 0]}
-        scale={0.3}
-        rotation={[0, 0.2*Math.PI, 0]}
-        >
+      scale = {0.2}
+      rotation = { [-0.2*Math.PI, 0.1*Math.PI, 0] }
+      >
+       
+        <planeGeometry
+        args ={[16, 16, 128, 128]}
+        
+        />
         <meshStandardMaterial 
         onBeforeCompile = { onBeforeCompile }
-        map = { mapTexture }
+        envMap = { envMap }
         normalMap = { normalTexture }
-        roughness = { 0.3 }
+        roughness = { 0.1 }
         metalness = { 1 }
         />
       </mesh>
