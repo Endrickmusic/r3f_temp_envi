@@ -80,7 +80,7 @@ export function Model(props) {
         color = { 0xf4c400 }
         envMap = { envMap }
         normalMap = { normalTexture }
-        normalScale = { [0.2, 0.2] }
+        normalScale = { [0.07, 0.07] }
         roughness = { 0.16 }
         metalness = { 1 }
         side = { DoubleSide }
